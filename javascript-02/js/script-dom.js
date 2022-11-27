@@ -37,7 +37,7 @@ sam1.src = 'img/image1.png';
 let photoCount = 1;
 
 const btn = document.getElementsByTagName('input').item(0);
-btn.addEventListener('click', () => {
+let btnClickEvent = btn.addEventListener('click', (e) => {
     // let randomNum = Math.floor(Math.random()*4) + 1;
     // sam1.src = 'img/image' + randomNum + '.png';
     if (photoCount === 4) {
@@ -45,6 +45,36 @@ btn.addEventListener('click', () => {
     } else {
         photoCount++;
     }
-    document.getElementsByClassName('countP').item(0).textContent = photoCount + '枚目';
+    let photoCountElem = document.getElementsByClassName('countP').item(0)
+    photoCountElem.textContent = photoCount + '枚目';
     sam1.src = 'img/image' + photoCount + '.png';
 });
+
+// 1. 要素内の文字列(テキスト)の変更
+let descOfPhoto = document.getElementsByTagName('h3')[0];
+descOfPhoto.textContent = '編集済み';
+
+// 2. 関数を使ってみる！
+function message() {
+    console.log('関数テストを実行する');
+    document.bgColor = 'yellow';
+};
+
+message();
+
+// // 関数(オリジナルメソッド)
+// function 関数名() {
+//     実行させたい処理;
+// }
+// //呼び出し時
+// 関数名();
+
+// 即時関数
+((a) => {
+    console.log(a)
+})(1200)
+
+// 3. 一定時間ごとに処理を実行(setIntervalメソッド)
+setInterval("btn.click()",1000);
+// setInterval("処理したい内容", 経過時間(ms));
+// setTimeout("一度のみ処理したい内容",経過時間(ms));
